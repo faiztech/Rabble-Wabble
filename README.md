@@ -12,16 +12,16 @@ RayWenderlich.com
 Classified on how objects **communicate** with each other
 
 ### Delegation Pattern
-In short, the delegation patterns enables an object to use a "helper" to provide data or perform tasks rather than do the task itself. examples of Delegation protocols in UIKit: `UITableViewDataSource`, `UITableViewDelegate`.
+In short, the delegation pattern enables an object to use a "helper" to provide data or perform tasks rather than do the task itself. examples of Delegation protocols in UIKit: `UITableViewDataSource`, `UITableViewDelegate`.
 
 <details open>
 <summary>Learn More</summary>
 <br>
 
 ```mermaid
-graph TD;
-    A[Object Needing a Delegate]--delegates to -->B[protocol Delegate Protocol];
-    C[Object Acting as a Delegate]--confirms to-->B;
+graph BT;
+    A[Object Needing a Delegate]--delegates to-->B[protocol Delegate Protocol];
+    C[Object Acting as a Delegate]-.conforms to.->B;
 ```
 
 **Steps**
@@ -52,11 +52,11 @@ Three parts: object using the strategy, the strategy protocol, and a family of s
 <br>
 
 ```mermaid
-graph TD;
+graph BT;
     A[Object using a Strategy]--has a-->B[protocol Strategy Protocol];
-    C[Concrete Strategy 1]--confirms to-->B;
-    D[Concrete Strategy 2]--confirms to-->B;
-    E[Concrete Strategy 3]--confirms to-->B;
+    C[Concrete Strategy 1]-.conforms to.->B;
+    D[Concrete Strategy 2]-.conforms to.->B;
+    E[Concrete Strategy 3]-.conforms to.->B;
 ```
 
 **Steps**
@@ -71,3 +71,36 @@ graph TD;
  - Similar to the delegation pattern, both use protocol. However, strategies are meant to be switched at runtime, whereas delegates are usually fixed.
  - Try not to overuse this pattern. The trick to the pattern is to realize when to pull behaviors out from the mainVC into a strategy protocol. 
 </details>
+
+## Creational Patterns: 
+Classified on how objects are **created**
+
+### Singleton Pattern
+In short, the singleton pattern restricts the class to only one instance. Extremely common. 
+Singleton Plus pattern is also common, that allows creation of other instances of the Singleton (simply make the init public instead of private like in the Singleton). 
+
+**Important** Singletons are problematic for testing for two reasons 
+- if there is state being stored in a global object like a singleton then the order of the tests starts to matter 
+- and, they are very painful to mock. 
+
+<details open>
+<summary>Learn More</summary>
+<br>
+
+```mermaid
+graph BT;
+    A[Singleton - shared: Singleton static]-->A;
+```
+
+**Steps**
+
+ Inside the class (say `OwnerClass`) that owns the protocol.
+ 1. Create a class and then create an instance of the same class inside itself.
+ 2. Create a `private init` inside this class for a true singleton and a `public init` for a SingletonPlus.
+ 3. Use throughout the app.
+
+**Notes**: 
+
+ - Very easy to overuse and misuse. Make sure there is no other way of doing what you are trying to do before using a Singleton. 
+ - Saving UserSettings is one use-case.
+
