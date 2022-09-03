@@ -29,13 +29,13 @@ public class RandomQuestionStrategy: QuestionStrategy {
     }
 
     public func advanceToNextQuestion() -> Bool {
-        guard questionIndex + 1 < questionGroup.questions.count else { return false }
+        guard questionIndex + 1 < questions.count else { return false }
         questionIndex += 1
         return true
     }
 
     public func currentQuestion() -> Question {
-        questionGroup.questions[questionIndex]
+        questions[questionIndex]
     }
 
     public func markQuestionCorrect(_ question: Question) {
@@ -47,6 +47,6 @@ public class RandomQuestionStrategy: QuestionStrategy {
     }
 
     public func questionIndexTitle() -> String {
-        return "\(questionIndex)/\(questionGroup.questions.count)"
+        return "\(questionIndex + 1)/\(questionGroup.questions.count)"
     }
 }
