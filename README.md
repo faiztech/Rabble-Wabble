@@ -2,6 +2,9 @@
 
 An app to learn design patterns in Swift "comprehensively"!
 
+Credits: Design Patterns by Tutorials by Joshua Greene & Jay Strawn
+RayWenderlich.com
+
 ## Fundamental Design Patterns
 
 
