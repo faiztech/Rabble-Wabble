@@ -40,6 +40,6 @@ public final class DiskCaretaker {
     public static func createDocumentURL(withFileName fileName: String) -> URL {
         let fileManager = FileManager.default
         let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        return url.appendingPathComponent(fileName).appendingPathComponent("json")
+        return url.appendingPathComponent(fileName).appendingPathExtension("json")
     }
 }
