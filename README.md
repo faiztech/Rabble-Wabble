@@ -72,6 +72,35 @@ graph BT;
  - Try not to overuse this pattern. The trick to the pattern is to realize when to pull behaviors out from the mainVC into a strategy protocol. 
 </details>
 
+### Memento Pattern
+In short, the memento pattern allows an object to be saved and restored. Use this pattern whenever you want to save and restore an object's state.
+Three parts: (imagine a Game)
+1. Originator (this is the class which saves and retrieves data, say the Game Screen itself)
+2. Memento (this is the saved game (saved data))
+3. Care Taker (this is the class reponsible for saving the data from originator into memento and retrieving data back from memento and giving it to the originator)
+
+<details open>
+<summary>Learn More</summary>
+<br>
+
+```mermaid
+graph BT;
+    A[Originator]-.Creates & uses.->B[Memento];
+    C[Caretaker]--persists-->B;
+```
+
+**Steps**
+1. Create Model to be saved (say Score)
+2. Create a caretaker that saves (encodes) & retrieves (decodes) data from the saved state (memento; could be a `json` file in the app).
+3. Use this caretaker to save and retrieve data from the originator.
+
+
+**Notes**: 
+
+ - Be careful while using the `Codable` protocol, always safely unwrap the data to the model and vice versa.
+ - Plan ahead when changing models as the save data might not be up to date with the new structure. Try using an upgrade path to convert from old to new data, *versioning models + using a versioned database should help too*.
+</details>
+
 ## Creational Patterns: 
 Classified on how objects are **created**
 
@@ -103,4 +132,12 @@ graph BT;
 
  - Very easy to overuse and misuse. Make sure there is no other way of doing what you are trying to do before using a Singleton. 
  - Saving UserSettings is one use-case.
+
+### Side Note
+
+- Codable - Any type that conforms to `Codable` **can convert itself into and out of an external representation** (eg. JSON). Behind the scenes, `Codable` is a typealias that combines `Encodable` and `Decodable`.
+- `final`
+- `static`
+- `atomic`
+
 
