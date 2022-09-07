@@ -101,6 +101,35 @@ graph BT;
  - Plan ahead when changing models as the save data might not be up to date with the new structure. Try using an upgrade path to convert from old to new data, *versioning models + using a versioned database should help too*.
 </details>
 
+### Observer Pattern **important**
+This pattern is now supported in Swift 5.1 natively under the Combine framework. Very Powerful and Useful. In short, this pattern lets one object observe the changes on another object.
+
+
+<details open>
+<summary>Learn More</summary>
+<br>
+
+```mermaid
+graph BT;
+    A[Subscriber]--has a-->B[Publisher];
+    B--has a-->C[Value];
+    B-.subscribes to.-A
+```
+
+**Steps**
+
+ 1. `import Combine` obviously.
+ 2. Create the variables inside the Model that needs to be Published using `@Published` keyword.
+ 3. Subscribe to the changes on this variable using an `AnyCancellable` object. This subscription now starts observing and any changes made to the published variable will run some code implemented in this subscriber's completion block.
+
+**Notes**: 
+
+ - Make sure the value is required to be observed and will change before using `@Published`.
+ - `@Published` only works on `classes` and `var` variables.
+ - You can access the publisher object of a variable by placing a `$` before the variable. eg: `$xyz`
+ - `.sink` returns a type of `AnyCancellable` and if this is explicitly marked as optional then by making the obejct nil the subscription ends.
+</details>
+
 ## Creational Patterns: 
 Classified on how objects are **created**
 
@@ -136,8 +165,9 @@ graph BT;
 ### Side Note
 
 - Codable - Any type that conforms to `Codable` **can convert itself into and out of an external representation** (eg. JSON). Behind the scenes, `Codable` is a typealias that combines `Encodable` and `Decodable`.
-- `final`
-- `static`
-- `atomic`
-
+- `final` - when put before class declaration, the class cannot be sub-classed. When put before a method declaration the method cannot be overridden.
+- `static` - By declaring properties and methods as `static`, Swift allocates them directly into the object’s memory, making it available for use without the need of an instance. Enables the Singleton pattern where the object creates an static instance of itself inside of itself.
+- `atomic` - swift properties are non-atomic by default. An operation is atomic if it appears to the rest of the system to occur at a single instant without being interrupted, it guarantees a value inside of it. Though it has a small performance cost, it ensures that the data is not corrupted.
+- `private(set)` - restricts outside classes from setting the variable directly from outside the class.
+- Good idea to always make UI calls on the main thread `DispatchQueue.main`.
 

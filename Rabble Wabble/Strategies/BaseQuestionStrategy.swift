@@ -31,7 +31,7 @@ public class BaseQuestionStrategy: QuestionStrategy {
         self.questionGroupCaretaker = questionGroupCaretaker
         self.questions = questions
 
-        self.questionGroupCaretaker.selectedQuestionsGroup.score = QuestionGroup.Score()
+        self.questionGroupCaretaker.selectedQuestionsGroup.score.reset()
     }
 
     public var title: String {
