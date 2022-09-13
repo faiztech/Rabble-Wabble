@@ -64,9 +64,13 @@ extension SelectQuestionViewController: UITableViewDelegate {
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let viewController = segue.destination as? QuestionViewController else { return }
+        if let viewController = segue.destination as? QuestionViewController {
         viewController.questionStrategy = appSettings.questionStrategy(for: questionGroupsCaretaker)
         viewController.delegate = self
+        } else if let navController = segue.destination as? UINavigationController,
+                  let viewController = navController.topViewController as? CreateQuestionGroupViewController {
+            viewController.delegate = self
+        }
     }
 }
 
@@ -80,5 +84,19 @@ extension SelectQuestionViewController: QuestionViewControllerDelegate {
     public func questionViewController(_ viewController: UIViewController,
                                        didComplete questionGroup: QuestionStrategy) {
         navigationController?.popToViewController(self, animated: true)
+    }
+}
+
+extension SelectQuestionViewController: CreateQuestionGroupViewControllerDelegate {
+    public func createQuestionGroupViewControllerDidCancel(_ viewController: CreateQuestionGroupViewController) {
+        dismiss(animated: true)
+    }
+
+    public func createQuestionGroupViewController(_ viewController: CreateQuestionGroupViewController, created questionGroup: QuestionGroup) {
+        questionGroupsCaretaker.questionGroups.append(questionGroup)
+        try? questionGroupsCaretaker.save()
+
+        dismiss(animated: true)
+        tableView.reloadData()
     }
 }
