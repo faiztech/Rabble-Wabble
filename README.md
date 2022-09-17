@@ -5,8 +5,7 @@ An app to learn design patterns in Swift "comprehensively"!
 Credits: Design Patterns by Tutorials by Joshua Greene & Jay Strawn
 RayWenderlich.com
 
-## Fundamental Design Patterns
-
+# Fundamental Design Patterns
 
 ## Behavioral Patterns: 
 Classified on how objects **communicate** with each other
@@ -162,12 +161,59 @@ graph BT;
  - Very easy to overuse and misuse. Make sure there is no other way of doing what you are trying to do before using a Singleton. 
  - Saving UserSettings is one use-case.
 
-### Side Note
+### Builder Pattern 
+Another creation-al pattern, that deals with creating complex objects. Has three parts, the Director (usually a ViewController), a Product (either a `class` or a `struct`; essentially an object model) and a Builder which Handles creation of the object (often a class).
+
+
+<details open>
+<summary>Learn More</summary>
+<br>
+
+```mermaid
+graph BT;
+    A[Director]--uses/has a-->B[Product];
+    A--uses/has a-->C[Builder];
+    C-.creates a.-B
+```
+
+**Steps**
+
+ Inside the class (say `OwnerClass`) that owns the protocol.
+ 1. Create a Builder class, that aligns with the object you're trying to build and give the properties default values.
+ 2. Create a `build()` method that throws if the properties are not assigned correctly; this method returns the Object (product) being created.
+ 3. Use the Builder to create your object and then assign.
+
+**Notes**: 
+
+When should you not use Builder Pattern? 
+Works best when you're trying to create a complex object which requires input using a series of steps. If the logic does not involve a series of inputs it is best not to use the Builder Pattern. 
+
+
+
+# Intermediate Design Patterns
+
+coming soon...
+
+## MVVM - Model View ViewModel Pattern
+## Factory Pattern
+## Adapter Pattern
+## Iterator Pattern
+## Prototype Pattern
+## State Pattern
+## Multicast Delegate Pattern
+## Facade Pattern
+
+### Side Notes
 
 - Codable - Any type that conforms to `Codable` **can convert itself into and out of an external representation** (eg. JSON). Behind the scenes, `Codable` is a typealias that combines `Encodable` and `Decodable`.
 - `final` - when put before class declaration, the class cannot be sub-classed. When put before a method declaration the method cannot be overridden.
 - `static` - By declaring properties and methods as `static`, Swift allocates them directly into the object’s memory, making it available for use without the need of an instance. Enables the Singleton pattern where the object creates an static instance of itself inside of itself.
 - `atomic` - swift properties are non-atomic by default. An operation is atomic if it appears to the rest of the system to occur at a single instant without being interrupted, it guarantees a value inside of it. Though it has a small performance cost, it ensures that the data is not corrupted.
-- `private(set)` - restricts outside classes from setting the variable directly from outside the class.
+- `private(set)` - restricts outside classes from setting the variable directly from outside the class, instead these properties can be set using public setter methods. You can set the variables privately and use them publicly by defining them as `public private(set)`.
 - Good idea to always make UI calls on the main thread `DispatchQueue.main`.
+
+// TODO: 
+- `OptionSet` & difference between array and option setting
+- `Storyboard Reference` to segregate views when using a storyboard approach.
+
 
