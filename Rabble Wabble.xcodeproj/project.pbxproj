@@ -29,6 +29,7 @@
 		399F6F5328D0F15000D9D17E /* CreateQuestionGroupTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399F6F4F28D0F15000D9D17E /* CreateQuestionGroupTitleCell.swift */; };
 		399F6F5428D0F15000D9D17E /* CreateQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399F6F5028D0F15000D9D17E /* CreateQuestionCell.swift */; };
 		399F6F5528D0F15000D9D17E /* JapaneseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399F6F5128D0F15000D9D17E /* JapaneseTextField.swift */; };
+		399F6F5828D65D8A00D9D17E /* QuestionGroupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399F6F5728D65D8A00D9D17E /* QuestionGroupBuilder.swift */; };
 		7315C77D2888B38F00FFEDCE /* SelectQuestionGroupViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315C77C2888B38F00FFEDCE /* SelectQuestionGroupViewControler.swift */; };
 		7315C77F2888B49300FFEDCE /* QuestionGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315C77E2888B49300FFEDCE /* QuestionGroupCell.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		399F6F4F28D0F15000D9D17E /* CreateQuestionGroupTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionGroupTitleCell.swift; sourceTree = "<group>"; };
 		399F6F5028D0F15000D9D17E /* CreateQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionCell.swift; sourceTree = "<group>"; };
 		399F6F5128D0F15000D9D17E /* JapaneseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JapaneseTextField.swift; sourceTree = "<group>"; };
+		399F6F5728D65D8A00D9D17E /* QuestionGroupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupBuilder.swift; sourceTree = "<group>"; };
 		7315C77C2888B38F00FFEDCE /* SelectQuestionGroupViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQuestionGroupViewControler.swift; sourceTree = "<group>"; };
 		7315C77E2888B49300FFEDCE /* QuestionGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				0737C38E27F36DCD007C14B6 /* App Delegate */,
+				399F6F5628D65D2800D9D17E /* Builders */,
 				3937DEC628C5350100B74A31 /* Caretakers */,
 				0737C39127F36DE8007C14B6 /* Controllers */,
 				0737C38F27F36DDD007C14B6 /* Models */,
@@ -175,6 +178,14 @@
 				3937DEC928C5383D00B74A31 /* QuestionGroupCaretaker.swift */,
 			);
 			path = Caretakers;
+			sourceTree = "<group>";
+		};
+		399F6F5628D65D2800D9D17E /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				399F6F5728D65D8A00D9D17E /* QuestionGroupBuilder.swift */,
+			);
+			path = Builders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +278,7 @@
 				3937DEC828C5351F00B74A31 /* DiskCaretaker.swift in Sources */,
 				0737C37D27F36A47007C14B6 /* SceneDelegate.swift in Sources */,
 				0737C39C27F36FF1007C14B6 /* QuestionView.swift in Sources */,
+				399F6F5828D65D8A00D9D17E /* QuestionGroupBuilder.swift in Sources */,
 				3937DEBA28C3B4FA00B74A31 /* QuestionStrategy.swift in Sources */,
 				7315C77F2888B49300FFEDCE /* QuestionGroupCell.swift in Sources */,
 			);
