@@ -160,6 +160,7 @@ graph BT;
 
  - Very easy to overuse and misuse. Make sure there is no other way of doing what you are trying to do before using a Singleton. 
  - Saving UserSettings is one use-case.
+</details>
 
 ### Builder Pattern 
 Another creation-al pattern, that deals with creating complex objects. Has three parts, the Director (usually a ViewController), a Product (either a `class` or a `struct`; essentially an object model) and a Builder which Handles creation of the object (often a class).
@@ -188,7 +189,7 @@ graph BT;
 When should you not use Builder Pattern? 
 Works best when you're trying to create a complex object which requires input using a series of steps. If the logic does not involve a series of inputs it is best not to use the Builder Pattern. 
 
-
+</details>
 
 # Intermediate Design Patterns
 
